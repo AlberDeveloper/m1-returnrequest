@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<config>
+    <modules>
+        <Alberto_ReturnRequest>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Alberto_ReturnRequest>
+    </modules>
+</config>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+
+    <customer_account>
+        <!-- Add link to customer account navigation -->
+        <reference name="customer_account_navigation">
+            <action method="addLink" translate="label" module="returnrequest"><name>returnrequest</name><path>returnrequest/request/index/</path><label>Return Request</label></action>
+        </reference>
+    </customer_account>
+
+    <returnrequest_request_index translate="label">
+        <label>Customer My Account Request a Return</label>
+        <update handle="customer_account"/>
+        <reference name="my.account.wrapper">
+            <block type="returnrequest/sales_order" name="sales.order.returns" template="sales/order/return/form.phtml"/>
+        </reference>
+    </returnrequest_request_index>
+</layout>

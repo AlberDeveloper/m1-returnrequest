@@ -1,0 +1,49 @@
+
+<?php $_orders = $this->getOrders(); ?>
+<div class="page-title">
+    <h1><?php echo $this->__('Submit New Return Request') ?></h1>
+</div>
+
+<?php if(count($_orders) > 0): ?>
+    <form action="<?php echo $this->getPostActionUrl() ?>" method="post" id="return-request-form">
+        <div class="fieldset">
+            <h2 class="legend"><?php echo $this->__('Return Request') ?></h2>
+            <ul class="form-list">
+                <li class="fields">
+                    <div class="field">
+                        <label for="order" class="required"><em>*</em><?php echo $this->__('Order') ?></label>
+                        <div class="input-box">
+                            <select id="order_id" name="order_id" class="validate-select">
+                                <option value=""><?php echo $this->__('Select order...')?></option>
+                                <?php foreach($_orders as $id => $incrementId) :?>
+                                    <option value="<?php echo $id?>"><?php echo $incrementId?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                    </div>
+                </li>
+                <li class="fields">
+                   <div class="field">
+                       <label for="comment" class="required"><em>*</em><?php echo $this->__('Comment') ?></label>
+                       <div class="input-box">
+                           <textarea name="comment" id="comment" class="input-text required-entry validate-length maximum-length-255"></textarea>
+                           <p class="note"><small><?php echo $this->__('Maximum number of characters:')?> 255</small></p>
+                       </div>
+                   </div>
+                </li>
+            </ul>
+            <div class="buttons-set">
+                <p class="required"><?php echo $this->__('* Required Fields') ?></p>
+                <p class="back-link"><a href="<?php echo $this->escapeUrl($this->getBackUrl()) ?>" class="back-link"><small>&laquo; </small><?php echo $this->__('Back') ?></a></p>
+                <button type="submit" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Submit')) ?>" class="button"><span><span><?php echo $this->__('Submit') ?></span></span></button>
+            </div>
+        </div>
+    </form>
+    <script type="text/javascript">
+        //< ![CDATA[
+        var returnRequestForm = new VarienForm('return-request-form');
+        //]]>
+    </script>
+<?php else: ?>
+    <p><?php echo $this->__('You have placed no orders to request a return.'); ?></p>
+<?php endif ?>
